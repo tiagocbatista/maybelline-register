@@ -139,16 +139,6 @@ table {
     border-spacing: 0;
 }
 
-/* ------------------------------- Error Page ------------------------------- */
-.errorPage {
-    text-align: center;
-}
-
-.errorMessage {
-    font-size: 3rem;
-    font-weight: bold;
-}
-
 /* ------------------------------- Header ------------------------------- */
 .imageContainer {
     align-items: center;
@@ -166,4 +156,27 @@ table {
     font-weight: bold;
     margin: 3rem 0;
     text-align: center;
+}
+
+/* ------------------------------- Search Section ------------------------------- */
+.form-control:focus {
+    border-color: #cccccc;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.form-control {
+    width: 50%;
+}
+
+/* ------------------------------- Form Section ------------------------------- */
+.form-label {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+    .form-control {
+        width: 100%;
+    }
 }
