@@ -3,7 +3,8 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 require('dotenv').config()
-const clientRoute = require('./assets/routes/clientRoute')
+const clientRoute = require('./routes/clientRoute')
+const path = require('path')
 
 
 /* Conexão do banco de dados - MongoDB */
@@ -17,7 +18,11 @@ db.once('open', () => {
     console.log('Banco carregado');
 });
 
+/* Setando a view engine para carregar páginas html (frontend) */
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'templates'));
 
+app.use('/public', express.static('public'));
 app.use('/', clientRoute);
 
 

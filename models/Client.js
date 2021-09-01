@@ -15,7 +15,7 @@ const clientSchema = new mongoose.Schema({
         required: true
     },
     cpf: {
-        type: Number,
+        type: String,
         required: true
     },
     nascimento: {
@@ -33,6 +33,14 @@ const clientSchema = new mongoose.Schema({
     compra: {
         type: Number,
         required: true
+    },
+    boletos: {
+        type: Number,
+        default: 1
+    },
+    lastUpdate: {
+        type: Date,
+        default: Date
     }
 });
 
