@@ -3,44 +3,8 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 require('dotenv').config()
+const clientRoute = require('./assets/routes/clientRoute')
 
-/* Criação do Schema e Model */
-const clientSchema = new mongoose.Schema({
-    quiosque: {
-        type: String,
-        required: true
-    },
-    vendedora: {
-        type: String,
-        required: true
-    },
-    cliente: {
-        type: String,
-        required: true
-    },
-    cpf: {
-        type: Number,
-        required: true
-    },
-    nascimento: {
-        type: String,
-        required: true
-    },
-    bairro: {
-        type: String,
-        required: true
-    },
-    telefone: {
-        type: String,
-        required: true
-    },
-    compra: {
-        type: Number,
-        required: true
-    }
-});
-
-const Client = mongoose.model('Client', clientSchema);
 
 /* Conexão do banco de dados - MongoDB */
 mongoose.connect(process.env.URI_MONGODB)
@@ -54,10 +18,7 @@ db.once('open', () => {
 });
 
 
-/* Definição de Rotas */
-app.get('/', (req, res) => {
-    res.send('Hello World')
-});
+app.use('/', clientRoute);
 
 
 /* Inicialização do Servidor Local */
