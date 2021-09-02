@@ -19,64 +19,39 @@
     </header>
 
     <main>
-        <h1 class="pageTitle">Cadastro Aeroporto</h1>
+        <h1 class="pageTitle">Atualização de Cliente</h1>
 
-        <%if(registrationSuccess) {%>
-        <div class="container w-50">
-            <div class="alert alert-success alert-dismissible" role="alert" id="liveAlert">
-                <strong>Cadastro realizado com sucesso!</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        </div>
-        <%}%>
-
-        <section class="container">
-            <form class="searchSection" action='/search' method='POST'>
-                <div class="mb-2 searchCPF">
-                    <label for="searchCPF" class="form-label">CPF</label>
-                    <input name='cpf' type="text" class="form-control" id="searchCPF">
-                </div>
-                <button type="submit" class="searchButton btn btn-dark">Pesquisar</button>
-            </form>
-            <hr>
-        </section>
         <section class="registerSection container">
-            <form action='/' method='POST'>
-                <div class="mb-3">
-                    <label for="sellersName" class="form-label">Quiosque</label>
-                    <input name='quiosque' type="text" class="form-control" id="quiosque" value="Aeroporto" readonly>
-                </div>
-                <div class="mb-3">
-                    <label for="sellersName" class="form-label">Vendedora</label>
-                    <input name='vendedora' type="text" class="form-control" id="sellersName" required>
-                </div>
+            <button class="btn btn-dark mb-3" onclick='goBack()'>Voltar</button>
+            
+            <form action='/updateClient' method='POST'>
                 <div class="mb-3">
                     <label for="clientsName" class="form-label">Nome da Cliente</label>
-                    <input name='cliente' type="text" class="form-control" id="clientsName" required>
+                    <input name='cliente' type="text" class="form-control" id="clientsName" value="<%=body.cliente%>"
+                        readonly required>
                 </div>
                 <div class="mb-3">
                     <label for="clientsCPF" class="form-label">CPF</label>
-                    <input name='cpf' type="text" class="form-control" id="clientsCPF" required>
-                </div>
-                <div class="mb-3">
-                    <label for="clientsBirthday" class="form-label">Data de Nascimento</label>
-                    <input name='nascimento' type="date" class="form-control" id="clientsBirthday" required>
+                    <input name='cpf' type="text" class="form-control" id="clientsCPF" value='<%=body.cpf%>' readonly
+                        required>
                 </div>
                 <div class="mb-3">
                     <label for="clientsNeighborhood" class="form-label">Bairro</label>
-                    <input name='bairro' type="text" class="form-control" id="clientsNeighborhood" required>
+                    <input name='bairro' type="text" class="form-control" id="clientsNeighborhood"
+                        value='<%=body.bairro%>' required>
                 </div>
                 <div class="mb-3">
                     <label for="clientsPhone" class="form-label">Número de Telefone</label>
-                    <input name='telefone' type="tel" class="form-control" id="clientsPhone" required>
+                    <input name='telefone' type="tel" class="form-control" id="clientsPhone" value='<%=body.telefone%>'
+                        required>
                 </div>
                 <div class="mb-2">
                     <label for="purchaseAmount" class="form-label">Valor da Compra</label>
-                    <input name='compra' type="number" class="form-control" id="purchaseAmount" min=0 step=".01"
-                        required>
+                    <input name='compra' type="number" class="form-control" step=".01" id="purchaseAmount" required>
                 </div>
-                <button type="submit" class="btn btn-dark">Cadastrar</button>
-
+                <div class='d-flex align-items-center'>
+                    <button type="submit" class="btn btn-dark">Atualizar</button>
+                </div>
             </form>
         </section>
     </main>
@@ -100,10 +75,11 @@
         $(document).ready(function () {
             $('#clientsPhone').mask('(00) 0 0000-0000');
             $('#clientsCPF').mask('000.000.000-00');
-            function showAlertSuccess() {
-                alert('Cadastrado com sucesso');
-            }
         });
+
+        function goBack() {
+            window.history.back();
+        }
     </script>
 </body>
 
