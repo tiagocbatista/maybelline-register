@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro Aeroporto</title>
+    <title>Cadastro Shopping Barra</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="/public/css/style.css">
@@ -19,39 +19,56 @@
     </header>
 
     <main>
-        <h1 class="pageTitle">Atualização de Cliente</h1>
+        <h1 class="pageTitle">Cadastro Shopping Barra</h1>
 
+        <section class="container">
+            <a class="btn btn-danger mb-4" href="/" role="button">Escolher outro quiosque</a>
+            <form class="searchSection" action='/search' method='POST'>
+                <div class="mb-2 searchCPF">
+                    <label for="searchCPF" class="form-label">CPF</label>
+                    <input name='cpf' type="text" class="form-control" id="searchCPF">
+                </div>
+                <button type="submit" class="searchButton btn btn-dark">Pesquisar</button>
+            </form>
+            <hr>
+        </section>
         <section class="registerSection container">
-            <button class="btn btn-dark mb-3" onclick='goBack()'>Voltar</button>
-
-            <form action='/updateClient' method='POST'>
+            <form action='/' method='POST'>
+                <div class="mb-3">
+                    <label for="sellersName" class="form-label">Quiosque</label>
+                    <input name='quiosque' type="text" class="form-control" id="quiosque" value="Barra" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="sellersName" class="form-label">Vendedora</label>
+                    <input name='vendedora' type="text" class="form-control" id="sellersName" required>
+                </div>
                 <div class="mb-3">
                     <label for="clientsName" class="form-label">Nome da Cliente</label>
-                    <input name='cliente' type="text" class="form-control" id="clientsName" value="<%=body.cliente%>"
-                        readonly required>
+                    <input name='cliente' type="text" class="form-control" id="clientsName" required>
                 </div>
                 <div class="mb-3">
                     <label for="clientsCPF" class="form-label">CPF</label>
-                    <input name='cpf' type="text" class="form-control" id="clientsCPF" value='<%=body.cpf%>' readonly
-                        required>
+                    <input name='cpf' type="text" class="form-control" id="clientsCPF" required>
+                </div>
+                <div class="mb-3">
+                    <label for="clientsBirthday" class="form-label">Data de Nascimento</label>
+                    <input name='nascimento' type="date" class="form-control" id="clientsBirthday" required>
                 </div>
                 <div class="mb-3">
                     <label for="clientsNeighborhood" class="form-label">Bairro</label>
-                    <input name='bairro' type="text" class="form-control" id="clientsNeighborhood"
-                        value='<%=body.bairro%>' required>
+                    <input name='bairro' type="text" class="form-control" id="clientsNeighborhood" required>
                 </div>
                 <div class="mb-3">
                     <label for="clientsPhone" class="form-label">Número de Telefone</label>
-                    <input name='telefone' type="tel" class="form-control" id="clientsPhone" value='<%=body.telefone%>'
-                        required>
+                    <input name='telefone' type="tel" class="form-control" id="clientsPhone" required>
                 </div>
                 <div class="mb-2">
                     <label for="purchaseAmount" class="form-label">Valor da Compra</label>
-                    <input name='compra' type="number" class="form-control" step=".01" id="purchaseAmount" required>
+                    <input name='compra' type="number" class="form-control" id="purchaseAmount" min=0 step=".01"
+                        required>
                 </div>
-                <div class='d-flex align-items-center'>
-                    <button type="submit" class="btn btn-dark">Atualizar</button>
-                </div>
+                <button type="submit" class="btn btn-dark">Cadastrar</button>
+
             </form>
         </section>
     </main>
@@ -75,11 +92,12 @@
         $(document).ready(function () {
             $('#clientsPhone').mask('(00) 0 0000-0000');
             $('#clientsCPF').mask('000.000.000-00');
-        });
+            $('#searchCPF').mask('000.000.000-00');
 
-        function goBack() {
-            window.history.back();
-        }
+            function showAlertSuccess() {
+                alert('Cadastrado com sucesso');
+            }
+        });
     </script>
 </body>
 

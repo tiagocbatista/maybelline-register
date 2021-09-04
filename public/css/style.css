@@ -140,6 +140,10 @@ table {
 }
 
 /* ------------------------------- Header ------------------------------- */
+a {
+    text-decoration: none;
+}
+
 .imageContainer {
     align-items: center;
     background-color: black;

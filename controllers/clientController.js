@@ -10,12 +10,22 @@ const addClient = async (req, res) => {
     if (!doc) {
         try {
             let doc = await client.save();
-            res.render('page-aeroporto-register', {registrationSuccess: true});
+            res.render('index', {
+                registrationSuccess: true,
+                updateSuccess: false,
+                cpfExists: false,
+                cpfNotFound: false
+            });
         } catch (error) {
             res.send(error);
         }
     } else {
-        res.send('CPF já cadastrado');
+        res.render('index', {
+            registrationSuccess: false,
+            updateSuccess: false,
+            cpfExists: true,
+            cpfNotFound: false
+        });
     }
 }
 
@@ -26,7 +36,12 @@ const searchClient = async (req, res) => {
         });
 
         if (!doc) {
-            res.send('Nenhuma cliente encontrada');
+            res.render('index', {
+                registrationSuccess: false,
+                updateSuccess: false,
+                cpfExists: false,
+                cpfNotFound: true
+            });
         } else {
             res.render('update-client', {
                 body: doc
@@ -46,10 +61,18 @@ const updateClient = async (req, res) => {
                 compra: req.body.compra,
                 boletos: 1
             },
-            bairro: req.body.bairro, telefone: req.body.telefone
+            bairro: req.body.bairro,
+            telefone: req.body.telefone,
+            lastUpdate: Date.now()
         });
 
-        res.send('Atualizado com sucesso');
+        res.render('index', {
+            registrationSuccess: false,
+            updateSuccess: true,
+            cpfExists: false,
+            cpfNotFound: false
+        });
+
     } catch (error) {
         res.send(error);
     }
