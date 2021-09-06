@@ -183,4 +183,12 @@ a {
     .form-control {
         width: 100%;
     }
+
+    .maybellineLogo {
+        width: 100%;
+    }
+
+    .pageTitle {
+        font-size: 2.5rem;
+    }
 }
