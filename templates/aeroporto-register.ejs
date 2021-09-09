@@ -23,11 +23,7 @@
 
         <section class="container">
             <a class="btn btn-danger mb-4" href="/" role="button">Escolher outro quiosque</a>
-            <%if(cpfError) {%>
-                <div class="alert alert-danger" role="alert">
-                    CPF já cadastrado!
-                  </div>
-                <%}%>
+
             <form class="searchSection" action='/search' method='POST'>
                 <div class="mb-2 searchCPF">
                     <label for="searchCPF" class="form-label">CPF</label>

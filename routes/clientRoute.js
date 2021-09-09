@@ -5,31 +5,31 @@ const clientController = require('../controllers/clientController');
 /* Definição de Rotas */
 
 router.get('/aeroporto', (req, res) => {
-    res.render('aeroporto-register', {cpfError: false});
+    res.render('aeroporto-register');
 });
 
 router.get('/bahia', (req, res) => {
-    res.render('bahia-register', {cpfError: false});
+    res.render('bahia-register');
 });
 
 router.get('/barra', (req, res) => {
-    res.render('barra-register', {cpfError: false});
+    res.render('barra-register');
 });
 
 router.get('/itaigara', (req, res) => {
-    res.render('itaigara-register', {cpfError: false});
+    res.render('itaigara-register');
 });
 
 router.get('/paralela', (req, res) => {
-    res.render('paralela-register', {cpfError: false});
+    res.render('paralela-register');
 });
 
 router.get('/parque', (req, res) => {
-    res.render('parque-register', {cpfError: false});
+    res.render('parque-register');
 });
 
 router.get('/salvador', (req, res) => {
-    res.render('salvador-register', {cpfError: false});
+    res.render('salvador-register');
 });
 
 router.get('/updateClient', (req, res) => {
